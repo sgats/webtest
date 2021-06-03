@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body data-model-type="hudson.model.FreeStyleBuild" id="jenkins" class="yui-skin-sam two-column jenkins-2.222.4"
+    data-version="2.222.4">
+    <input type="text" id="clock" />
+    <script type="text/javascript">
+        var int = self.setInterval("clock()", 1000);
+        function clock() {
+            var d = new Date();
+            var t = d.toLocaleTimeString();
+            document.getElementById("clock").value = t;
+        }
+    </script>
+
+    <button onclick="int=window.clearInterval(int)">停止</button>
+    <a href="#skip2content" class="skiplink">Skip to content</a>
+    <TABLE width=200>
+        <TR>
+            <TD><INPUT TYPE="button" NAME="aa" onclick="test.refresh();" value="刷新"></TD>
+        </TR>
+    </TABLE>
+    <a type="post" href="http://10.100.17.86:8080/jenkins/job/test/build?token=123456" target="iFrameName">触发构建</a>
+    <a type="get" href="http://10.100.17.86:8080/jenkins/job/test/34/api/json" target="_self">查看日志</a>
+    <div>
+        <hr />
+        <iframe name="iFrameName" src="http://10.100.17.86:8080/jenkins/job/test/34/console" scrolling="auto"
+            frameborder="0" width="100%" height="900">框架内查看</iframe>
+        <br /><br /><br /><br />
+
+    </div>
+</body>
+
+</html>
