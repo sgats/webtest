@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>使用JavaScript脚本实现form表单的提交与重置</title>
+  <meta name="author" content="pan_junbiao的博客">
+  <script src="https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
+</head>
+
+<body>
+  <div class="first" id="first" style="display: block; border: 1px solid red;">
+    <form name="myForm">
+      <table align="center">
+        <caption>用户注册</caption>
+        <tr>
+          <td>登录账户：</td>
+          <td>
+            <input type="text" name="loginName" />
+          </td>
+        </tr>
+        <tr>
+          <td>登录密码：</td>
+          <td>
+            <input type="password" name="loginPwd" />
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div>
+  <div class="second" id="second" style="display: none; border: 1px solid red;">
+    <form name="myForm">
+      <table align="center">
+        <caption>注册</caption>
+        <tr>
+          <td>账户：</td>
+          <td>
+            <input type="text" name="loginName" />
+          </td>
+        </tr>
+        <tr>
+          <td>密码：</td>
+          <td>
+            <input type="password" name="loginPwd" />
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div>
+  <table>
+    <!-- 以下是提交、取消按钮 -->
+    <tr>
+      <td colspan="2" style="text-align: center; padding: 5px;">
+        <input type="button" value="提交" onclick="submitFrom()" />
+        <input type="button" value="重置" onclick="resetFrom()" />
+        <input id="change" type="button" value="切换" />
+      </td>
+    </tr>
+  </table>
+
+</body>
+<script>
+  //提交
+  function submitFrom() {
+    //验证数据
+    if (!myForm.loginName.value) {
+      alert("请输入登录账户！");
+      myForm.loginName.focus();
+      return;
+    }
+
+    if (!myForm.loginPwd.value) {
+      alert("请输入登录密码！");
+      myForm.loginPwd.focus();
+      return;
+    }
+
+    //提交表单
+    myForm.method = 'POST';
+    myForm.action = "action.html";
+    myForm.submit();
+  }
+
+  //重置
+  function resetFrom() {
+    //重置表单
+    document.getElementsByName("myForm")[0].reset();
+  }
+
+  // 切换
+  // function change() {}
+  $('#change').on('click', function() {
+    var var1 = $('#first');
+    var var2 = $('#second');
+    console.log("我点击了");
+    if (var1.is(':hidden')) {
+      var1.show();
+      var2.hide();
+    } else {
+      undefined
+      var1.hide();
+      var2.show();
+    }
+
+  })
+</script>
+
+</html>
